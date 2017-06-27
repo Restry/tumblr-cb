@@ -1,0 +1,25 @@
+{
+  "presets": [
+    [
+      "env",
+      { //这个options的意思就是说自动给我转换成支持chrome52和
+        //所有最近浏览器的最后两个版本，再加上ie9
+        "targets": {
+          "browsers": [
+            "last 2 versions",
+            "ie 9"
+          ]
+        }
+      }
+    ],
+    "react",
+    "stage-0"
+  ]
+  //`,
+  // "plugins": ["transform-runtime", "transform-react-jsx"],
+  // "env": {
+  //   "development": {
+  //     "presets": ["react-hmre"]
+  //   }
+  // }
+}
