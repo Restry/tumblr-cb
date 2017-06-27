@@ -494,7 +494,7 @@ p {
 }
 
 .comment-body {
-    color: #fff;
+    color: #0b4802;
 }
 
 .comment-count {
@@ -527,7 +527,7 @@ p {
 
 .comment-header {
     border-bottom: 2px solid #fff;
-    color: #fff;
+    color: #525151;
     margin-bottom: 10px;
     padding-bottom: 5px;
 }
@@ -541,7 +541,7 @@ p {
 }
 
 .comment-form::before {
-    background: url("../public/images/illo-gears.svg") center no-repeat;
+    background: url("./images/cool.svg") center no-repeat;
     content: '';
     height: 80px;
     position: absolute;
