@@ -1,8 +1,12 @@
+# 介绍
+基于nodejs平台来完成一个基础功能包括：服务端、客户端的全栈站点
+- 后端使用express+mongodb
+- 前端使用react
 
-#技术栈
-mengodb+react+express+nodejs
+# 技术栈
+mongodb+react+express+nodejs
 
-#功能点
+# 功能点
 
 ## Webpack
 
