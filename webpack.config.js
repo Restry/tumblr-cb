@@ -3,13 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpack = require('webpack');
 const baseUrl = path.resolve(__dirname, "dist");
-// var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
 	entry: './src/app.js',
 	output: {
 		path: baseUrl,
-		filename: 'bundle.js'
+		filename: '[name].bundle.js'
 	},
 	module: {
 		loaders: [
@@ -91,7 +91,7 @@ module.exports = {
 
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
-			filename: 'vendor-[hash].min.js',
+			filename: '[name]-[hash].js',
 		}),
 		new HtmlWebpackPlugin({
 			template: './src/index.html',
@@ -102,7 +102,10 @@ module.exports = {
 		new ExtractTextPlugin({
 			filename: './css/[name].min.css',
 			allChunks: true,
-		})
+		}),
+        new CopyWebpackPlugin([
+            { from: 'public' }
+        ])
 	],
 	devtool: "source-map",
 };

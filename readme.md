@@ -8,8 +8,13 @@ mongodb+react+express+nodejs
 
 # 功能点
 
-## Webpack
+# 安装
+> yarn start 启动api和src服务，支持热加载
 
+> yarn build 生成dist文件夹
+
+## Webpack
+- public文件夹，自动复制到输出目录
 - 行内base64图片
 - 单独生成css样式文件
 - webpack-dev-server自动编译加刷新
