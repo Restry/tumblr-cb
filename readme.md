@@ -6,12 +6,17 @@
 # 技术栈
 mongodb+react+express+nodejs
 
-# 功能点
+# 业务介绍
+## 首页
+显示最近留言top 10 ，显示总留言数。
+## 留言区
+登陆验证，权限控制
 
-# 安装
-> yarn start 启动api和src服务，支持热加载
+# 技术功能点
+## React-Router 4.0
 
-> yarn build 生成dist文件夹
+## Redux
+
 
 ## Webpack
 - public文件夹，自动复制到输出目录
@@ -20,3 +25,9 @@ mongodb+react+express+nodejs
 - webpack-dev-server自动编译加刷新
 - .babelrc 全局设置nodejs环境的es6转换
 - express.js
+
+
+# 安装
+> yarn start 启动api和src服务，支持热加载
+
+> yarn build 生成dist文件夹

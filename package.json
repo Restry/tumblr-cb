@@ -38,6 +38,8 @@
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-router-dom": "^4.1.1",
+    "redux": "^3.7.1",
+    "redux-saga": "^0.15.4",
     "style-loader": "^0.18.2",
     "svg-url-loader": "^2.0.2",
     "tumblr.js": "^1.1.1",

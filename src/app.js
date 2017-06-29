@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
 import './themes/init.css'
 import {
-    BrowserRouter as Router,
+    HashRouter as Router,
     Route,
     Link
 } from 'react-router-dom'
