@@ -1,10 +1,28 @@
-import { createStore, applyMiddleware } from 'redux'
-import createSagaMiddleware from 'redux-saga'
+import { createStore, applyMiddleware, compose } from 'redux';
+import rootReducer from '../reducers';
+import thunk from 'redux-thunk';
+import createMiddleware from './clientMiddleware';
+import ApiClient from '../helpers/ApiClient';
 
-//...
-import { helloSaga } from './reducers/sagas'
+export default function configureStore(initialState) {
+  const client = new ApiClient();
+  let enhancer = null;
 
-const store = createStore(
-  reducer,
-  applyMiddleware(createSagaMiddleware(helloSaga))
-)
+  if (__DEVELOPMENT__ && window.__REDUX_DEVTOOLS_EXTENSION__) {
+    const DevTools = require('../helpers/DevTools');
+    enhancer = compose(
+      //你要使用的中间件，放在前面
+      applyMiddleware(createMiddleware(client), thunk),
+      //必须的！启用带有monitors（监视显示）的DevTools
+      window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (() => { })
+    );
+  } else {
+    enhancer = applyMiddleware(createMiddleware(client), thunk);
+  }
+
+  return createStore(
+    rootReducer,
+    initialState,
+    enhancer
+  );
+}
