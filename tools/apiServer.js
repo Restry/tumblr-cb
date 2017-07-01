@@ -6,6 +6,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 var Comment = require('../src/model/comments');
+var mock = require('./mock');
 
 //and create our instances
 var app = express();
@@ -94,6 +95,7 @@ router.route('/comments/:comment_id')
 
 //Use our router configuration when we call /api
 app.use('/api', router);
+mock.applyMock(app);
 
 //starts the server and listens for requests
 app.listen(port, function() {

@@ -397,7 +397,7 @@ th {
 }
 
 body {
-    background-color: #fce87c;
+    /*background-color: #fce87c;*/
     color: #000;
     font-family: "Open Sans", Helevetica, Arial, sans-serif;
     font-size: 16px;
@@ -541,7 +541,7 @@ p {
 }
 
 .comment-form::before {
-    background: url("./images/cool.svg") center no-repeat;
+    background: url("../../public/images/cool.svg") center no-repeat;
     content: '';
     height: 80px;
     position: absolute;

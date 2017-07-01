@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom';
 import './themes/init.css'
+import './themes/app.css'
 import {
     HashRouter as Router,
     Route,
