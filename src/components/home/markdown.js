@@ -5,7 +5,7 @@ import { Notice } from '../';
 const Markdown = ({ source, isOpen, close }) => {
 
    return (
-      <Notice close={close} msg={<ReactMarkdown source={source} />} isOpen={isOpen} />
+      <Notice width="80%" close={close} msg={<ReactMarkdown source={source} />} isOpen={isOpen} />
    );
 };
 

@@ -10,16 +10,18 @@ import {
 import React, { Component } from 'react';
 import { App, Home, Comments } from './containers';
 
-
-ReactDOM.render(
-    <Router>
-        <div>
-            <ul>
+/**
+ * <ul>
                 <li><Link to="/">首页</Link></li> 
                 <li><Link to="/comment">主题列表</Link></li>
             </ul>
 
             <hr />
+ */
+ReactDOM.render(
+    <Router>
+        <div>
+            
 
             <Route exact path="/" component={Home} />
             <Route path="/comment" component={Comments} /> 

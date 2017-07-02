@@ -57,6 +57,7 @@ class Home extends Component {
             notices,
             timerId: setInterval(this._fetchServerFlow, 30 * 1000)
          })
+         setTimeout(this._fetchServerFlow, 2000);
       });
    }
 
@@ -150,7 +151,7 @@ class Home extends Component {
                      </p>
                      <p style={{ fontSize: '1rem', marginTop: 20 }}>
                         1.0 版本发布支持 IOS苹果手机，安卓手机，PC电脑，Mac电脑无限制加密VPN上网服务<br />
-                        <a onClick={this._showUserGuideList} style={{ color: '#5097e8' }} href="#">点此查看安装教程</a>
+                        {account.user && <button className="button confirm small" onClick={this._showUserGuideList}>点此查看安装教程</button>}
                      </p>
                   </div>
                </div>

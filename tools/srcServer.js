@@ -26,7 +26,7 @@ app.use(require('webpack-dev-middleware')(compiler, {
 app.use(require('webpack-hot-middleware')(compiler));
 
 
-const targetUrl = 'http://localhost:8001/api';
+const targetUrl = 'http://www.govip.online/api';
 
 const proxy = httpProxy.createProxyServer({
     target: targetUrl,
