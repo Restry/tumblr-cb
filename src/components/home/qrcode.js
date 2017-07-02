@@ -32,7 +32,7 @@ class QRCodeWrapper extends Component {
                         </div>
                         <div className="modal-header" style={{ fontSize: 14, fontWeight: 'normal', textAlign: 'center' }}>点击二维码或者用移动设备扫描二维码可自动填充服务器信息</div>
                         <div className="modal-body" style={{ textAlign: 'center' }}>
-                            <QRCode value={qrMark} />
+                            <QRCode size="256" value={qrMark} />
                             <br/>
                             {qrMark}
                         </div>

@@ -14,17 +14,19 @@ const compiler = webpack(config);
 const port = process.env.PORT || 8080;
 
 app.set('port', (port));
-app.use(express.static('../public'));
+// app.use(express.static('../public'));
 
 app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true,
+    noInfo: false,
+    stats: { colors: true },
+    hot:true,
     publicPath: config.output.publicPath
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));
 
 
-const targetUrl = 'http://localhost:3001/api';
+const targetUrl = 'http://localhost:8001/api';
 
 const proxy = httpProxy.createProxyServer({
     target: targetUrl,

@@ -6,24 +6,25 @@ const baseUrl = path.resolve(__dirname, "dist");
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-	entry: './src/app.js',
+	entry: ['webpack-hot-middleware/client', './src/app.js'],
 	output: {
 		path: baseUrl,
+		publicPath: '',
 		filename: '[name].bundle.js'
 	},
 	module: {
 		loaders: [
 			// 使用babel-loader解析js或者jsx模块
-			{ test: /\.js|.jsx$/, loader: 'babel-loader', exclude: /node_modules/ },
+			{ test: /\.js|.jsx$/, use: 'babel-loader', exclude: /node_modules/ },
 			// 使用css-loader解析css模块
 			{
-				test: /\.css$/, loader: ExtractTextPlugin.extract({
-					fallbackLoader: 'style-loader',
-					loader: "css-loader",
+				test: /\.css$/, use: ExtractTextPlugin.extract({
+					fallback: 'style-loader',
+					use: "css-loader",
 				})
 			},
 			// html-loader
-			{ test: /\.html$/, loader: 'html-loader' },
+			{ test: /\.html$/, use: 'html-loader' },
 			{
 				test: /\.(jpeg|jpg|png|gif)$/,
 				use: [{
@@ -75,18 +76,18 @@ module.exports = {
 
 		]
 	},
-	devServer: {
-		proxy: { // proxy URLs to backend development server
-			'/api': 'http://localhost:3001'
-		},
-		contentBase: path.join(__dirname, 'public'), // boolean | string | array, static file location
-		compress: true, // enable gzip compression
-		historyApiFallback: true, // true for index.html upon 404, object for multiple paths
-		hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
-		https: false, // true for self-signed, object for cert authority
-		noInfo: true, // only errors & warns on hot reload
-		// ...
-	},
+	// devServer: {
+	// 	proxy: { // proxy URLs to backend development server
+	// 		'/api': 'http://localhost:3001'
+	// 	},
+	// 	contentBase: path.join(__dirname, 'public'), // boolean | string | array, static file location
+	// 	compress: true, // enable gzip compression
+	// 	historyApiFallback: true, // true for index.html upon 404, object for multiple paths
+	// 	hot: true, // hot module replacement. Depends on HotModuleReplacementPlugin
+	// 	https: false, // true for self-signed, object for cert authority
+	// 	noInfo: true, // only errors & warns on hot reload
+	// 	// ...
+	// },
 	plugins: [
 
 		new webpack.optimize.CommonsChunkPlugin({
@@ -98,14 +99,14 @@ module.exports = {
 			filename: 'index.html',
 			inject: 'body'
 		}),
-		new webpack.HotModuleReplacementPlugin(),
 		new ExtractTextPlugin({
 			filename: './css/[name].min.css',
 			allChunks: true,
 		}),
-        new CopyWebpackPlugin([
-            { from: 'public' }
-        ])
+		new CopyWebpackPlugin([
+			{ from: 'public' }
+		]),
+		new webpack.HotModuleReplacementPlugin(),
 	],
 	devtool: "source-map",
 };

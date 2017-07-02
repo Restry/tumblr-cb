@@ -15,11 +15,11 @@
     "react",
     "stage-0"
   ]
-  //`,
-  // "plugins": ["transform-runtime", "transform-react-jsx"],
-  // "env": {
-  //   "development": {
-  //     "presets": ["react-hmre"]
-  //   }
-  // }
+  ,
+  "plugins": ["transform-runtime", "transform-react-jsx"],
+  "env": {
+    "development": {
+      "presets": ["react-hmre"]
+    }
+  }
 }
