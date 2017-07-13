@@ -90,6 +90,11 @@ module.exports = {
 	// },
 	plugins: [
 
+      new webpack.DefinePlugin({
+         'process.env': {
+            NODE_ENV: '"development"'
+         },
+      }),
 		new webpack.optimize.CommonsChunkPlugin({
 			name: 'vendor',
 			filename: '[name]-[hash].js',
