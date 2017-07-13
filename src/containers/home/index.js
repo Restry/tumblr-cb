@@ -10,7 +10,10 @@ class Home extends Component {
       account: {},
       servers: [],
       notices: [],
-      msg: '',
+      noticeOpts: {
+         msg: '',
+         width: '500px'
+      },
       isOpen: false,
       showMarkdown: false,
       note: '',
@@ -23,6 +26,17 @@ class Home extends Component {
 
          this._showNotice('登陆成功！加载服务器信息，请稍候。。。');
          return this._fetchUserInfo();
+      })
+   }
+   logout = () => {
+
+      axios.post('/api/home/logout').then((ret) => {
+         this._showNotice('注销成功！');
+         this.setState({
+            account: [],
+            servers: [],
+            notices: []
+         })
       })
    }
    registration = (res) => {
@@ -75,8 +89,13 @@ class Home extends Component {
       }
    }
 
-   _showNotice(msg, autoClose = true) {
-      this.setState({ msg, isOpen: true });
+   _showNotice(msg, autoClose = true, width) {
+      const { noticeOpts } = this.state;
+      if (width)
+         noticeOpts.width = width;
+      noticeOpts.msg = msg;
+
+      this.setState({ noticeOpts, isOpen: true });
       autoClose && setTimeout(this._closeNotice, 3000)
    }
 
@@ -100,7 +119,7 @@ class Home extends Component {
                }
             </ol>
          </div>
-         , false)
+         , false, '600px')
    }
    componentWillMount() {
       this._fetchUserInfo();
@@ -111,11 +130,11 @@ class Home extends Component {
 
 
    render() {
-      const { showLogin, showRegister, msg,
+      const { showLogin, showRegister, noticeOpts,
          servers, account, isOpen, showMarkdown, note } = this.state;
       return (
          <div>
-            <Notice msg={msg} isOpen={isOpen} close={() => { this.setState({ isOpen: false }) }} />
+            <Notice {...noticeOpts} isOpen={isOpen} close={() => { this.setState({ isOpen: false }) }} />
             <Markdown source={note} isOpen={showMarkdown} close={() => this.setState({ showMarkdown: false })} />
 
             {showLogin && <Login
@@ -147,7 +166,7 @@ class Home extends Component {
                         GOVIP ONLINE 为您自由的网络无边界，提供安全、稳定、私有的上网服务
                         </p>
                      <p style={{ marginTop: 60 }}>
-                        <User account={account} showBox={() => { this.setState({ showLogin: true }) }} />
+                        <User logout={this.logout} account={account} showBox={() => { this.setState({ showLogin: true }) }} />
                      </p>
                      <p style={{ fontSize: '1rem', marginTop: 20 }}>
                         1.0 版本发布支持 IOS苹果手机，安卓手机，PC电脑，Mac电脑无限制加密VPN上网服务<br />

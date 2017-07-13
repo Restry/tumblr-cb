@@ -42,7 +42,7 @@ class Login extends Component {
       event.preventDefault();
 
       if (!this._email.value || !this._password.value) {
-         alert('Please enter your name and comment.');
+         alert('请输入邮箱和密码.');
          return;
       }
 
